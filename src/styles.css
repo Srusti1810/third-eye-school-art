@@ -1,0 +1,175 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Third Eye School of Art — premium artistic design system
+   Warm cream + terracotta orange + royal blue palette
+   Edit tokens here; components consume semantic classes. */
+
+@theme inline {
+  --font-display: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Caveat", "Brush Script MT", cursive;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-terracotta: var(--terracotta);
+  --color-royal: var(--royal);
+  --color-gold: var(--gold);
+
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--ink) 18%, transparent);
+  --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--terracotta) 35%, transparent);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Brand tokens */
+  --cream: oklch(0.975 0.018 80);
+  --ink: oklch(0.18 0.025 50);
+  --terracotta: oklch(0.68 0.165 45);
+  --terracotta-deep: oklch(0.56 0.175 38);
+  --royal: oklch(0.42 0.18 265);
+  --royal-deep: oklch(0.32 0.16 265);
+  --gold: oklch(0.82 0.12 85);
+
+  /* Semantic mapping */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.01 80);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.99 0.01 80);
+  --popover-foreground: var(--ink);
+  --primary: var(--terracotta);
+  --primary-foreground: oklch(0.99 0.01 80);
+  --secondary: var(--royal);
+  --secondary-foreground: oklch(0.99 0.01 80);
+  --muted: oklch(0.94 0.018 75);
+  --muted-foreground: oklch(0.42 0.03 50);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.99 0.01 80);
+  --border: oklch(0.88 0.025 70);
+  --input: oklch(0.92 0.02 70);
+  --ring: var(--terracotta);
+
+  --gradient-warm: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+  --gradient-royal: linear-gradient(135deg, var(--royal) 0%, var(--terracotta) 100%);
+  --gradient-canvas: radial-gradient(ellipse at top left, color-mix(in oklab, var(--terracotta) 18%, transparent), transparent 60%),
+                     radial-gradient(ellipse at bottom right, color-mix(in oklab, var(--royal) 14%, transparent), transparent 55%);
+}
+
+.dark {
+  --cream: oklch(0.16 0.018 50);
+  --ink: oklch(0.96 0.015 80);
+  --background: oklch(0.14 0.018 50);
+  --foreground: oklch(0.96 0.015 80);
+  --card: oklch(0.19 0.022 50);
+  --card-foreground: oklch(0.96 0.015 80);
+  --popover: oklch(0.19 0.022 50);
+  --popover-foreground: oklch(0.96 0.015 80);
+  --primary: oklch(0.72 0.17 45);
+  --primary-foreground: oklch(0.14 0.018 50);
+  --secondary: oklch(0.58 0.18 265);
+  --secondary-foreground: oklch(0.99 0.01 80);
+  --muted: oklch(0.24 0.022 50);
+  --muted-foreground: oklch(0.72 0.025 70);
+  --accent: oklch(0.78 0.13 85);
+  --accent-foreground: oklch(0.14 0.018 50);
+  --border: oklch(0.28 0.02 50);
+  --input: oklch(0.26 0.02 50);
+  --ring: oklch(0.72 0.17 45);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-script { font-family: var(--font-script); }
+  .text-balance { text-wrap: balance; }
+
+  .gradient-warm { background-image: var(--gradient-warm); }
+  .gradient-royal { background-image: var(--gradient-royal); }
+  .gradient-canvas { background-image: var(--gradient-canvas); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  .text-gradient {
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .watercolor-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+  .dark .watercolor-blob { mix-blend-mode: screen; opacity: 0.35; }
+
+  .paper-texture {
+    background-image:
+      radial-gradient(color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-24px) rotate(3deg); }
+}
+.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+
+@keyframes ink-drip {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-ink {
+  background-size: 200% 200%;
+  animation: ink-drip 12s ease infinite;
+}
