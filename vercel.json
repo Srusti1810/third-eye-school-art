@@ -1,12 +1,10 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".output/public",
-  "serverless": {
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/.output/server/index.mjs"
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
 }
