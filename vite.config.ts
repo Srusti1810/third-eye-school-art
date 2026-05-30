@@ -12,13 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  vite: {
-    ssr: {
-      noExternal: true,
-    },
-  },
   nitro: {
-    presets: ["node-server"],
+    preset: "node-server",
+    outDir: ".output",
     minify: false,
   },
 });
